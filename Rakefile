@@ -80,12 +80,11 @@ end
 # Same effect as sourcing a shell script before running rake. It's necessary to
 # set these values before the make/{platform}/env.rb files are loaded.
 def osx_bootstrap_env
-  ENV['DYLD_LIBRARY_PATH'] = '/usr/local/Cellar/cairo/1.10.2/lib:/usr/local/Cellar/cairo/1.10.2/include/cairo'
-  ENV['LD_LIBRARY_PATH'] = '/usr/local/Cellar/cairo/1.10.2/lib:/usr/local/Cellar/cairo/1.10.2/include/cairo'
-  ENV['CAIRO_CFLAGS'] = '-I/usr/local/Cellar/cairo/1.10.2/include/cairo'
-  ENV['SHOES_DEPS_PATH'] = '/usr/local'
+  ENV['DYLD_LIBRARY_PATH'] = "#{`brew --prefix`}/Cellar/cairo/1.10.2/lib:#{`brew --prefix`}/Cellar/cairo/1.10.2/include/cairo"
+  ENV['LD_LIBRARY_PATH'] = "#{`brew --prefix`}/Cellar/cairo/1.10.2/lib:#{`brew --prefix`}/Cellar/cairo/1.10.2/include/cairo"
+  ENV['CAIRO_CFLAGS'] = "-I#{`brew --prefix`}/Cellar/cairo/1.10.2/include/cairo"
+  ENV['SHOES_DEPS_PATH'] = "#{`brew --prefix`}"
 end
-
 
 
 case RUBY_PLATFORM
